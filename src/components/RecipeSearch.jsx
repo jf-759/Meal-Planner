@@ -17,7 +17,7 @@ const RecipeSearch = ({ onSearch }) => {
                 onChange={(e) => setQuery(e.target.value)}
             />
             <button
-                classNmae="bg-blue-500 text-white p-2 ml-2 rounded"
+                className="bg-blue-500 text-white p-2 ml-2 rounded"
                 onClick={handleSearch}
             >
                 Search
