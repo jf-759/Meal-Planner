@@ -1,12 +1,13 @@
-import { fetchRecipes } from '../api/spoonacular'
+import { fetchRecipes } from '../api/spoonacular.jsx'
 
 const testFetch = async () => {
     const { data, error } = await fetchRecipes('chicken', ['vegetarian'])
-    if (error) { 
-        console.log('API Error: ', error)
+
+    if (error) {
+        console.error('❌ API Error:', error)
     } else {
-        console.log('Fetched Recipes:', data)
+        console.log('✅ Fetched Recipes:', data)
     }
 }
 
-testFetch();
+testFetch()

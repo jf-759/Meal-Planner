@@ -8,16 +8,16 @@ const RecipeSearch = ({ onSearch }) => {
     }
 
     return (
-        <div className="p-4">
+        <div className="flex flex-col sm:flex-row items-center gap-3 p-4 bg-white rounded-lg shadow-sm border border-gray-200 max-w-xl mx-auto mt-6">
             <input
                 type="text"
-                className="border p-2 rounded"
-                placeholder="Search for recipes"
+                className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-blue-400 transition"
+                placeholder="Search for recipes..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />
             <button
-                className="bg-blue-500 text-white p-2 ml-2 rounded"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg transition"
                 onClick={handleSearch}
             >
                 Search

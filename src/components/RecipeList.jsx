@@ -8,19 +8,19 @@ const RecipeList = () => {
     const error = useSelector(selectError)
 
     if (status === 'loading') {
-        return <p className="text-center text-blue-500">Loading recipes...</p>
+        return <p className="text-center text-blue-500 text-sm mt-4">Loading recipes...</p>
     }
 
     if (status === 'failed') {
-        return <p className="text-center text-red-500">Error: {error}</p>
+        return <p className="text-center text-red-500 text-sm mt-4">Error: {error}</p>
     }
 
     if (recipes.length === 0) {
-        return <p className="text-center text-gray-500">No recipes found. Try a different</p>
+        return <p className="text-center text-gray-500 text-sm mt-4">No recipes found. Try a different</p>
     }
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
             {recipes.map((recipe) => (
                 <RecipeCard key={recipe.id} recipe={recipe} />
             ))}

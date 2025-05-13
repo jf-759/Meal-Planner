@@ -25,32 +25,36 @@ const SearchForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form 
+            onSubmit={handleSubmit} 
+            className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 max-w-xl mx-auto mt-6 space-y-5 px-4"  // added px-4 for padding
+        >
             <input
                 type="text"
                 placeholder="Search recipes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="p-2 border rounded w-full"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
             />
 
-            <div className="flex flex-wrap gap-2">
+            <fieldset className="flex flex-wrap gap-4">
                 {dietOptions.map((diet) => (
-                    <label key={diet} className="flex items-center gap-1">
+                    <label key={diet} className="flex items-center gap-2 text-sm text-gray-700 py-2">
                         <input
                             type="checkbox"
                             value={diet}
                             checked={selectedFilters.includes(diet)}
                             onChange={handleCheckboxChange}
+                            className="accent-blue-500 w-4 h-4"
                         />
-                        {diet}
+                        {diet.charAt(0).toUpperCase() + diet.slice(1)}
                     </label>
                 ))}
-            </div>
+            </fieldset>
 
             <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-3 rounded-lg transition w-full sm:w-auto"
             >
                 Search
             </button>
