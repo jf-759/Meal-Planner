@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import RecipeSearch from './components/RecipeSearch';
 import MealCalendar from './components/MealCalendar';
 import SearchForm from './components/SearchForm';
 import RecipeList from './components/RecipeList';
-import RecipeDetails from './components/RecipeDetails'; 
+import RecipeDetails from './components/RecipeDetails.jsx'; 
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectMealPlan, addToMealPlan } from './features/recipes/recipesSlice';
@@ -29,7 +29,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <>
       <div className="app-container">
         <div className="app-inner">
           <header className="app-header text-center mb-8 p-6">
@@ -46,7 +46,9 @@ const App = () => {
           </section>
 
           <section className="app-section">
-            <h2 className="section-title flex flex-box justify-center py-5 text-xl font-semibold text-gray-700">Recipe Search Results</h2>
+            <h2 className="section-title flex flex-box justify-center py-5 text-xl font-semibold text-gray-700">
+              Recipe Search Results
+            </h2>
             <RecipeList onRecipeClick={handleRecipeClick} />
           </section>
         </div>
@@ -55,8 +57,8 @@ const App = () => {
       <Routes>
         <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>
-    </Router>
-  );
-};
+    </>
+  )
+}
 
 export default App;
