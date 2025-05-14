@@ -8,13 +8,13 @@ export const recipesSlice = createSlice({
         status: 'idle',
         error: null,
         mealPlan: {
-            Monday: null,
-            Tuesday: null,
-            Wednesday: null,
-            Thursday: null,
-            Friday: null,
-            Saturday: null,
-            Sunday: null,
+            Monday: [],
+            Tuesday: [],
+            Wednesday: [],
+            Thursday: [],
+            Friday: [],
+            Saturday: [],
+            Sunday: [],
         },
     },
 
@@ -24,6 +24,30 @@ export const recipesSlice = createSlice({
         },
         setMealPlan: (state, action) => {
             state.mealPlan = {...state.mealPlan, ...action.payload }
+        },
+        addToMealPlan: (state, action) => {
+            const { day, id } = action.payload;
+            
+            // Find the recipe in the recipes array
+            const recipe = state.recipes.find(recipe => recipe.id === id);
+            
+            if (recipe && day) {
+                // Store the complete recipe object, not just the ID
+                const mealToAdd = {
+                    id: recipe.id,
+                    title: recipe.title,
+                    image: recipe.image,
+                };
+                
+                // Add the recipe to the selected day
+                state.mealPlan[day] = [...state.mealPlan[day], mealToAdd];
+            }
+        },
+        removeFromMealPlan: (state, action) => {
+            const { day, id } = action.payload;
+            if (state.mealPlan[day]) {
+                state.mealPlan[day] = state.mealPlan[day].filter(meal => meal.id !== id);
+            }
         },
     },
     extraReducers: (builder) => {
@@ -43,7 +67,7 @@ export const recipesSlice = createSlice({
     }
 })
 
-export const { setRecipes, setMealPlan } = recipesSlice.actions
+export const { setRecipes, setMealPlan, addToMealPlan, removeFromMealPlan } = recipesSlice.actions
 
 export const selectRecipes = (state) => state.recipes.recipes
 export const selectStatus = (state) => state.recipes.status

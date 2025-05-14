@@ -1,31 +1,36 @@
-import { useSelector } from 'react-redux'
-import { selectRecipes, selectStatus, selectError } from '../features/recipes/recipesSlice'
-import RecipeCard from './RecipeCard'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectRecipes } from '../features/recipes/recipesSlice';
 
-const RecipeList = () => { 
-    const recipes = useSelector(selectRecipes)
-    const status = useSelector(selectStatus)
-    const error = useSelector(selectError)
+const RecipeList = ({ onRecipeClick }) => {
+  const recipes = useSelector(selectRecipes);
 
-    if (status === 'loading') {
-        return <p className="text-center text-blue-500 text-sm mt-4">Loading recipes...</p>
+  const handleClick = (id) => {
+    if (onRecipeClick) {
+      onRecipeClick(id);
     }
+  };
 
-    if (status === 'failed') {
-        return <p className="text-center text-red-500 text-sm mt-4">Error: {error}</p>
-    }
+  return (
+    <div className="px-8 py-6 max-w-screen-xl mx-auto">
+      <div className="grid grid-cols-auto-fill-250 gap-6">
+        {recipes.map((recipe) => (
+          <div
+            key={recipe.id}
+            className="bg-white rounded-lg shadow-lg overflow-hidden text-center transition-transform duration-200 ease-in-out cursor-pointer hover:transform hover:-translate-y-1 hover:shadow-xl"
+            onClick={() => handleClick(recipe.id)}
+          >
+            <img
+              src={recipe.image}
+              alt={recipe.title}
+              className="w-full h-48 object-cover"
+            />
+            <h3 className="text-lg py-4 text-gray-800">{recipe.title}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-    if (recipes.length === 0) {
-        return <p className="text-center text-gray-500 text-sm mt-4">No recipes found. Try a different</p>
-    }
-
-    return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
-            {recipes.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
-            ))}
-        </div>
-    )
-}
-
-export default RecipeList
+export default RecipeList;

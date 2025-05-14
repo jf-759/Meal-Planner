@@ -1,20 +1,14 @@
-/** @type {import('tailwindcss').Config} */
-// export default {
-//   content: [],
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// }
-
-
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js, jsx, ts, tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",  // Note: Fixed the space after comma
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'auto-fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',
+      }
+    },
   },
   plugins: [],
 }
