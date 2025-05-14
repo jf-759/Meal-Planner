@@ -50,7 +50,7 @@ const MealCalendar = ({ mealPlan }) => {
                                         to={`/recipe/${meal.id}`} 
                                         className="text-blue-500 hover:text-blue-700 text-sm p-1 rounded-full hover:bg-blue-100 transition-colors"
                                     >
-                                        View Recipe
+                                    View Recipe
                                     </Link>
                                     <button
                                         onClick={() => handleRemoveMeal(day, meal.id)}
