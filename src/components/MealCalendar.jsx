@@ -48,11 +48,11 @@ const MealCalendar = ({ mealPlan }) => {
                                     </div>
                                     <Link 
                                         to={`https://spoonacular.com/recipes/${meal.title.replace(/\s+/g, '-').toLowerCase()}-${meal.id}`} 
-                                        className="text-blue-500 hover:text-blue-700 text-sm p-1 rounded-full hover:bg-blue-100 transition-colors"
+                                        className="text-white-500 hover:text-indigo-700 text-sm p-1 rounded-md hover:bg-indigo-100 transition-colors"
                                     >
                                         View Recipe
                                     </Link>
-
+                                    
                                     <button
                                         onClick={() => handleRemoveMeal(day, meal.id)}
                                         className="text-red-500 hover:text-red-700 text-sm p-1 rounded-full hover:bg-red-100 transition-colors"
