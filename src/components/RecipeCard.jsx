@@ -1,12 +1,12 @@
 import React from 'react';
-import ViewRecipeButton from './components/ViewRecipeButton'; // Adjust if needed based on your folder structure
-import AddToCalendarButton from './Components/AddToCalendarButton'; // Same here
+import ViewRecipeButton from './components/ViewRecipeButton'; 
+import AddToCalendarButton from './Components/AddToCalendarButton'; 
 
 const RecipeCard = ({ recipe }) => {
-  // Event Handlers
+
   const handleViewRecipe = (recipeId) => {
     console.log("Viewing recipe with id:", recipeId);
-    // Your logic to view the recipe details
+
   };
 
   return (
@@ -19,7 +19,7 @@ const RecipeCard = ({ recipe }) => {
       <h2 className="text-lg font-semibold text-gray-800">{recipe.title}</h2>
 
       <div className="mt-4 flex gap-2">
-        {/* Use the ViewRecipeButton and AddToCalendarButton components */}
+
         <ViewRecipeButton 
           recipeId={recipe.id} 
           handleViewRecipe={handleViewRecipe} 

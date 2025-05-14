@@ -28,7 +28,7 @@ const SearchForm = () => {
             onSubmit={handleSubmit}
             className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 max-w-xl mx-auto mt-6 space-y-6"
         >
-            {/* Search input */}
+   
             <input
                 type="text"
                 placeholder="Search recipes..."
@@ -37,7 +37,6 @@ const SearchForm = () => {
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
-            {/* Diet filters */}
             <fieldset className="flex flex-wrap gap-4 justify-center">
                 {dietOptions.map((diet) => (
                     <label key={diet} className="flex items-center text-sm space-x-2">
@@ -53,7 +52,6 @@ const SearchForm = () => {
                 ))}
             </fieldset>
 
-            {/* Submit button */}
             <button
                 type="submit"
                 className="w-full bg-indigo-400 text-white p-3 rounded-md hover:bg-indigo-600 transition-colors"

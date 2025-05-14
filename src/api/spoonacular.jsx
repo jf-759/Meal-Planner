@@ -2,7 +2,7 @@ export const fetchRecipes = async (query, filters = []) => {
   const API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
   const baseURL = 'https://api.spoonacular.com/recipes/complexSearch';
 
-  // 🔍 Basic validation
+
   if (!API_KEY) {
     console.error('Missing API key');
     return { data: [], error: 'Missing API key' };
@@ -16,7 +16,7 @@ export const fetchRecipes = async (query, filters = []) => {
     return { data: [], error: 'Filters must be an array' };
   }
 
-  // 🔍 Optional: limit to common diet filters if needed
+
   const allowedFilters = ['vegetarian', 'vegan', 'gluten free', 'dairy free', 'pescetarian', 'ketogenic'];
   const invalidFilters = filters.filter(
     (f) => typeof f !== 'string' || !allowedFilters.includes(f.toLowerCase())

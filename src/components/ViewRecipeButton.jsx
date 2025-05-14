@@ -1,4 +1,3 @@
-// ViewRecipeButton.jsx
 import React from 'react';
 
 const ViewRecipeButton = ({ recipeId, handleViewRecipe }) => {
