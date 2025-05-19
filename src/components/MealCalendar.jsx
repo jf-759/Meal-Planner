@@ -17,7 +17,7 @@ const MealCalendar = ({ mealPlan }) => {
                 <thead>
                     <tr>
                     {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day, index) => (
-                        <th key={index} className="px-4 py-2 text-gray-700 font-semibold">
+                        <th key={index} className="px-4 py-2 text-gray-700 dark:text-gray-200 font-semibold">
                         {day}
                         </th>
                     ))}
@@ -26,15 +26,15 @@ const MealCalendar = ({ mealPlan }) => {
                 <tbody>
                     <tr>
                     {Object.keys(mealPlan).map((day, index) => (
-                        <td key={index} className="border px-4 py-4">
-                        <div className="bg-violet-50 rounded-lg p-4 flex flex-col min-h-[100px] shadow-md">
+                        <td key={index} className="border border-gray-200 dark:border-gray-700 px-4 py-4">
+                        <div className="bg-violet-50 dark:bg-violet-900 rounded-lg p-4 flex flex-col min-h-[100px] shadow-md">
                             <div className="flex-grow">
                             {mealPlan[day] && mealPlan[day].length > 0 ? (
                                 <ul className="space-y-2">
                                 {mealPlan[day].map((meal, index) => (
                                     <li 
                                     key={`${day}-${meal.id || index}`} 
-                                    className="bg-gray-100 p-2 rounded-md flex items-center justify-between"
+                                    className="bg-gray-100 dark:bg-gray-800 p-2 rounded-md flex items-center justify-between"
                                     >
                                     <div className="flex items-center">
                                         {meal.image && (
@@ -44,18 +44,18 @@ const MealCalendar = ({ mealPlan }) => {
                                             className="w-8 h-8 rounded-full mr-2 object-cover"
                                         />
                                         )}
-                                        <span>{meal.title}</span>
+                                        <span className="text-gray-800 dark:text-gray-200">{meal.title}</span>
                                     </div>
                                     <Link 
                                         to={`https://spoonacular.com/recipes/${meal.title.replace(/\s+/g, '-').toLowerCase()}-${meal.id}`} 
-                                        className="text-white-500 hover:text-indigo-700 text-sm p-1 rounded-md hover:bg-indigo-100 transition-colors"
+                                        className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 text-sm p-1 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors"
                                     >
                                         View Recipe
                                     </Link>
                                     
                                     <button
                                         onClick={() => handleRemoveMeal(day, meal.id)}
-                                        className="text-red-500 hover:text-red-700 text-sm p-1 rounded-full hover:bg-red-100 transition-colors"
+                                        className="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 text-sm p-1 rounded-full hover:bg-red-100 dark:hover:bg-red-900 transition-colors"
                                         title="Remove meal"
                                     >
                                         ✕
@@ -64,7 +64,7 @@ const MealCalendar = ({ mealPlan }) => {
                                 ))}
                                 </ul>
                             ) : (
-                                <p className="text-gray-500 italic">No meal assigned</p>
+                                <p className="text-gray-500 dark:text-gray-400 italic">No meal assigned</p>
                             )}
                             </div>
                         </div>
